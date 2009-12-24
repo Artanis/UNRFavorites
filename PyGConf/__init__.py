@@ -1,3 +1,7 @@
+"""
+UNRFavorites (C) 2009 Erik Youngren <artanis.00@gmail.com>
+"""
+
 import gconf
 
 client = gconf.client_get_default()
