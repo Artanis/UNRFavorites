@@ -1,0 +1,11 @@
+UNRFavorites (C) 2009 Erik Youngren <artanis.00@gmail.com>
+
+To use:
+1) Run with `python UNRFavorites` (or build your own launcher for it.)
+2) Re-order the icons to your heart's content.
+3) Click the save button (this is crucial.)
+4) Restart netbook-launcher by either logging out and back in, or with
+   `killall netbook-launcher`. If you choose the latter,
+   netbook-launcher will restart itself and use the updated
+   configuration values.
+
