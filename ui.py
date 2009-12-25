@@ -1,7 +1,7 @@
 """
 UNRFavorites (C) 2009 Erik Youngren <artanis.00@gmail.com>
 """
-
+import os
 import gtk
 import gtk.glade
 
@@ -24,7 +24,10 @@ class FavoritesStore(gtk.ListStore):
                 if icon_path[0] == "/":
                     pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 64, 64)
                 else:
-                    pixbuf = theme.load_icon(icon_path, 64, gtk.ICON_LOOKUP_FORCE_SVG)
+                    try:
+                        pixbuf = theme.load_icon(icon_path, 64, gtk.ICON_LOOKUP_FORCE_SVG)
+                    except:
+                        pixbuf = theme.load_icon("gnome-fs-bookmark", 64, gtk.ICON_LOOKUP_FORCE_SVG)
             else:
                 pixbuf = theme.load_icon("gnome-fs-bookmark", 64, gtk.ICON_LOOKUP_FORCE_SVG)
             
@@ -32,7 +35,8 @@ class FavoritesStore(gtk.ListStore):
 
 class FavoritesManager(SimpleGladeApp):
     def __init__(self):
-        SimpleGladeApp.__init__(self, "ui.glade")
+        SimpleGladeApp.__init__(self,
+            os.path.dirname(__file__)+"/ui.glade")
         
         store = FavoritesStore()
         
